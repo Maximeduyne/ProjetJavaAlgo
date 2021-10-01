@@ -11,11 +11,9 @@ public class Main {
         DébutDeJeu();
         for (int i = 0; i < 100 ; i++) {
             Affichagejeu(tableau);
-            seDeplacer(tableau);
+            MouvementJoueur1(tableau);
             destruction(tableau);
-            tourJoueur(tableau);
-            seDeplacer2(tableau);
-            destruction(tableau);
+
         }
     }
 
@@ -42,118 +40,8 @@ public class Main {
         }
     }
 
-    public static void seDeplacer(String[][] tableau) {          // Deplacement pion bleu
-        boolean deplacementValide = true;
-        String[][] tab = TableauZero();
 
-        System.out.println( "deplacer à gauche = 1\n"+
-                            "deplacer à droite = 2\n" +
-                            "deplacer en haut = 3\n"+
-                            "deplacer en bas = 4");
-        int deplacement = sc.nextInt();
-
-        while(deplacementValide){
-            switch(deplacement -1){
-                case 0 :
-                    while (deplacementValide) {
-                        for (int i = 0; i < 10; i++) {
-                            for (int j = 0; j < 11; j++) {
-                                if (tableau[i][j] == "\uD83D\uDFE6") {
-                                    if (tableau[i][j - 1] == "⬜") {
-                                        tableau[i][j] = "⬜";
-                                        tableau[i][j - 1] = "\uD83D\uDFE6";
-                                        deplacementValide = false;
-                                        i = 12;
-                                        j = 12;
-                                    } else {
-                                        System.out.println("Ne pas aller la");
-                                        seDeplacer(tab);
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                case 1:
-                    while (deplacementValide) {
-                        for (int i = 0; i < 10; i++) {
-                            for (int j = 0; j < 11; j++) {
-                                if (tableau[i][j] == "\uD83D\uDFE6") {
-                                    if (tableau[i][j + 1] == "⬜") {
-                                        tableau[i][j] = "⬜";
-                                        tableau[i][j + 1] = "\uD83D\uDFE6";
-                                        deplacementValide = false;
-                                        i = 12;
-                                        j = 12;
-                                    } else {
-                                        System.out.println("Ne pas aller la");
-                                        seDeplacer(tab);
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                case 2:
-                    while (deplacementValide) {
-                        for (int i = 0; i < 10; i++) {
-                            for (int j = 0; j < 11; j++) {
-                                if (tableau[i][j] == "\uD83D\uDFE6") {
-                                    if (tableau[i - 1][j] == "⬜") {
-                                        tableau[i][j] = "⬜";
-                                        tableau[i - 1][j] = "\uD83D\uDFE6";
-                                        deplacementValide = false;
-                                        i = 12;
-                                        j = 12;
-                                    } else {
-                                        System.out.println("Ne pas aller la");
-                                        seDeplacer(tab);
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                case 3:
-                    while (deplacementValide) {
-                        for (int i = 0; i < 10; i++) {
-                            for (int j = 0; j < 11; j++) {
-                                if (tableau[i][j] == "\uD83D\uDFE6") {
-                                    if (tableau[i + 1][j] == "⬜") {
-                                        tableau[i][j] = "⬜";
-                                        tableau[i + 1][j] = "\uD83D\uDFE6";
-                                        deplacementValide = false;
-                                        i = 12;
-                                        j = 12;
-                                    } else {
-                                        System.out.println("Ne pas aller la");
-                                        seDeplacer(tab);
-                                    }
-                                }
-                            }
-                        }
-                    }
-            }
-        }
-        Affichagejeu(tableau);
-        return;
-    }
-
-    public static void tourJoueur(String[][] tableau) {
-
-        boolean Joueur = false;
-        while (Joueur)
-            if (Joueur) {
-                System.out.println("Joueur1 play");
-                int a = sc.nextInt();
-            } else {
-                System.out.println("Joueur2 play");
-                sc.nextInt();
-            }
-    }
-
-
-    public static void seDeplacer2(String[][] tableau) {          // Deplacement pion bleu
+    public static void MouvementJoueur1(String[][] tableau) {
         boolean deplacementValide = true;
         String[][] tab = TableauZero();
 
@@ -161,95 +49,101 @@ public class Main {
         System.out.println("deplacer a droite = 2");
         System.out.println("deplacer en haut = 3");
         System.out.println("deplacer en bas = 4");
-        int deplacement = sc.nextInt();
+        int seDeplacer = sc.nextInt();
 
-        while(deplacementValide){
-            switch(deplacement -1){
-                case 0 :
-                    while (deplacementValide) {
-                        for (int i = 0; i < 10; i++) {
-                            for (int j = 0; j < 11; j++) {
-                                if (tableau[i][j] == "\uD83D\uDFE5") {
-                                    if (tableau[i][j - 1] == "⬜") {
-                                        tableau[i][j] = "⬜";
-                                        tableau[i][j - 1] = "\uD83D\uDFE5";
-                                        deplacementValide = false;
-                                        i = 12;
-                                        j = 12;
-                                    } else {
-                                        System.out.println("Ne pas aller la");
-                                        seDeplacer2(tab);
-                                    }
-                                }
+
+        if (seDeplacer == 1) //déplacement jpueur 1 vers la gauche
+        {
+            while (deplacementValide)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    for (int j = 0; j < 11; j++)
+                    {
+                        if (tableau[i][j] == "\uD83D\uDFE6")
+                        {
+                            if (tableau[i][j - 1] == "⬜")
+                            {
+                                tableau[i][j] = "⬜";
+                                tableau[i][j - 1] = "\uD83D\uDFE6";
+                                deplacementValide = false;
+                                i = 12;
+                                j = 12;
+                            }
+                            else
+                            {
+                                System.out.println("Ne pas aller la");
+                                MouvementJoueur1(tab);
                             }
                         }
                     }
-
-                case 1:
-                    while (deplacementValide) {
-                        for (int i = 0; i < 10; i++) {
-                            for (int j = 0; j < 11; j++) {
-                                if (tableau[i][j] == "\uD83D\uDFE5") {
-                                    if (tableau[i][j + 1] == "⬜") {
-                                        tableau[i][j] = "⬜";
-                                        tableau[i][j + 1] = "\uD83D\uDFE5";
-                                        deplacementValide = false;
-                                        i = 12;
-                                        j = 12;
-                                    } else {
-                                        System.out.println("Ne pas aller la");
-                                        seDeplacer2(tab);
-                                    }
-                                }
+                }
+            }
+        }
+        if (seDeplacer == 2) {         // Deplacement Droite pion bleu
+            while (deplacementValide) {
+                for (int i = 0; i < 10; i++) {
+                    for (int j = 0; j < 11; j++) {
+                        if (tableau[i][j] == "\uD83D\uDFE6") {
+                            if (tableau[i][j + 1] == "⬜") {
+                                tableau[i][j] = "⬜";
+                                tableau[i][j + 1] = "\uD83D\uDFE6";
+                                deplacementValide = false;
+                                i = 12;
+                                j = 12;
+                            } else {
+                                System.out.println("Ne pas aller la");
+                                MouvementJoueur1(tab);
                             }
                         }
                     }
+                }
+            }
+        }
 
-                case 2:
-                    while (deplacementValide) {
-                        for (int i = 0; i < 10; i++) {
-                            for (int j = 0; j < 11; j++) {
-                                if (tableau[i][j] == "\uD83D\uDFE5") {
-                                    if (tableau[i - 1][j] == "⬜") {
-                                        tableau[i][j] = "⬜";
-                                        tableau[i - 1][j] = "\uD83D\uDFE5";
-                                        deplacementValide = false;
-                                        i = 12;
-                                        j = 12;
-                                    } else {
-                                        System.out.println("Ne pas aller la");
-                                        seDeplacer2(tab);
-                                    }
-                                }
+        if (seDeplacer == 3) {         // Deplacement Haut pion bleu
+            while (deplacementValide) {
+                for (int i = 0; i < 10; i++) {
+                    for (int j = 0; j < 11; j++) {
+                        if (tableau[i][j] == "\uD83D\uDFE6") {
+                            if (tableau[i - 1][j] == "⬜") {
+                                tableau[i][j] = "⬜";
+                                tableau[i - 1][j] = "\uD83D\uDFE6";
+                                deplacementValide = false;
+                                i = 12;
+                                j = 12;
+                            } else {
+                                System.out.println("Ne pas aller la");
+                                MouvementJoueur1(tab);
                             }
                         }
                     }
+                }
+            }
+        }
 
-                case 3:
-                    while (deplacementValide) {
-                        for (int i = 0; i < 10; i++) {
-                            for (int j = 0; j < 11; j++) {
-                                if (tableau[i][j] == "\uD83D\uDFE5") {
-                                    if (tableau[i + 1][j] == "⬜") {
-                                        tableau[i][j] = "⬜";
-                                        tableau[i + 1][j] = "\uD83D\uDFE5";
-                                        deplacementValide = false;
-                                        i = 12;
-                                        j = 12;
-                                    } else {
-                                        System.out.println("Ne pas aller la");
-                                        seDeplacer2(tab);
-                                    }
-                                }
+        if (seDeplacer == 4) {         // Deplacement Bas pion bleu
+            while (deplacementValide) {
+                for (int i = 0; i < 10; i++) {
+                    for (int j = 0; j < 11; j++) {
+                        if (tableau[i][j] == "\uD83D\uDFE6") {
+                            if (tableau[i + 1][j] == "⬜") {
+                                tableau[i][j] = "⬜";
+                                tableau[i + 1][j] = "\uD83D\uDFE6";
+                                deplacementValide = false;
+                                i = 12;
+                                j = 12;
+                            } else {
+                                System.out.println("Ne pas aller la");
+                                MouvementJoueur1(tab);
                             }
                         }
                     }
+                }
             }
         }
         Affichagejeu(tableau);
     }
-
-
 
 
     //Creation de la Fonction DébutDeJeu Qui sert à choisir son pseudo
@@ -308,7 +202,7 @@ public class Main {
         printMenu();
         choice = scan.nextInt();
 
-        while(choice != 4){
+        while(choice != 3){
             switch(choice){
                 case 1 :
                     jeu();
@@ -326,9 +220,7 @@ public class Main {
 
                     break;
 
-                case 3 :
-                    System.out.println("Affichage des Scores");
-                    break;
+
                 default :
                     System.out.println("\nJe te donne les Selection réfléchi un peu !!\n");
             }
@@ -346,8 +238,7 @@ public class Main {
                            "\n" +
                            "1)Commencer le jeu\n" +
                            "2)Afficher les règles\n" +
-                           "3)Afficher les scores\n" +
-                           "4)Quitter le Jeu");
+                           "3)Quitter le Jeu");
     }
 
 
